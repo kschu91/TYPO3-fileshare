@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>database</type>
+        <description>Language labels for database tables/fields belonging to extension 'fileshare'</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+
+            <label index="plugin.downloads">Secure Downloads</label>
+
+            <label index="tx_fileshare_domain_model_share">Share</label>
+            <label index="tx_fileshare_domain_model_share.label">Label</label>
+            <label index="tx_fileshare_domain_model_share.token">Token</label>
+
+        </languageKey>
+        <languageKey index="de" type="array">
+
+            <label index="plugin.downloads">Geschützter Download</label>
+
+            <label index="tx_fileshare_domain_model_share">Freigabe</label>
+            <label index="tx_fileshare_domain_model_share.label">Bezeichnung</label>
+            <label index="tx_fileshare_domain_model_share.token">Token</label>
+
+        </languageKey>
+    </data>
+</T3locallang>

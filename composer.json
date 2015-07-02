@@ -1,0 +1,8 @@
+{
+    "name": "i4w/fileshare",
+    "description": "allows secure sharing of files",
+    "type": "typo3-cms-extension",
+    "require": {
+        "typo3/cms-core": "*"
+    }
+}
