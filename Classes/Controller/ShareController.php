@@ -2,7 +2,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Kevin Schu <kevin.schu@innovations4web.de>, innovations4web
+ *  (c) 2015 Kevin Schu <kevin.schu@innovations4web.de>
  *
  *  All rights reserved
  *
