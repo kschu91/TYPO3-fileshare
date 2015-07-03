@@ -7,20 +7,32 @@
     <data type="array">
         <languageKey index="default" type="array">
 
+            <label index="configuration.category.general.pageId">
+                Page ID:
+                The ID from that page on which the plugin is added. This is needed to create the
+                link to the share correctly.
+            </label>
+
             <label index="plugin.downloads">Secure Downloads</label>
 
             <label index="tx_fileshare_domain_model_share">Share</label>
             <label index="tx_fileshare_domain_model_share.label">Label</label>
             <label index="tx_fileshare_domain_model_share.token">Token</label>
+            <label index="tx_fileshare_domain_model_share.contact">Contact person or company</label>
+            <label index="tx_fileshare_domain_model_share.generate">Generate link</label>
 
         </languageKey>
         <languageKey index="de" type="array">
+
+            <label index="configuration.category.general.pageId">Page ID</label>
 
             <label index="plugin.downloads">Geschützter Download</label>
 
             <label index="tx_fileshare_domain_model_share">Freigabe</label>
             <label index="tx_fileshare_domain_model_share.label">Bezeichnung</label>
             <label index="tx_fileshare_domain_model_share.token">Token</label>
+            <label index="tx_fileshare_domain_model_share.contact">Kontaktperson oder Firma</label>
+            <label index="tx_fileshare_domain_model_share.generate">Link generieren</label>
 
         </languageKey>
     </data>

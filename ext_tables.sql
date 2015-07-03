@@ -13,6 +13,7 @@ CREATE TABLE tx_fileshare_domain_model_share (
 
 	label tinytext,
 	token tinytext,
+	contact tinytext,
 
 	storage int(11) DEFAULT '0' NOT NULL,
 	folder text NOT NULL,

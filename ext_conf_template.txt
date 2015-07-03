@@ -1,0 +1,2 @@
+# cat=general; type=integer; label=LLL:EXT:fileshare/Resources/Private/Language/locallang_db.xml:configuration.category.general.pageId
+pageId = 0

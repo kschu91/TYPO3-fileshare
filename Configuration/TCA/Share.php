@@ -10,7 +10,7 @@ $TCA['tx_fileshare_domain_model_share'] = array(
         'showRecordFieldList' => 'hidden,label,token',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden;;1;;1-1-1, label, token, storage, folder'),
+        '1' => array('showitem' => 'hidden;;1;;1-1-1, label, contact, token, storage, folder, generate'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -24,6 +24,15 @@ $TCA['tx_fileshare_domain_model_share'] = array(
         'label' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:fileshare/Resources/Private/Language/locallang_db.xml:tx_fileshare_domain_model_share.label',
+            'config' => array(
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim,required'
+            ),
+        ),
+        'contact' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:fileshare/Resources/Private/Language/locallang_db.xml:tx_fileshare_domain_model_share.contact',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -58,6 +67,7 @@ $TCA['tx_fileshare_domain_model_share'] = array(
         'folder' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_file_collection.folder',
+            'displayCond' => 'FIELD:storage:!=:0',
             'config' => array(
                 'type' => 'select',
                 'items' => array(),
@@ -66,6 +76,22 @@ $TCA['tx_fileshare_domain_model_share'] = array(
                 'eval' => 'required',
                 'itemsProcFunc' => 'typo3/sysext/core/Classes/Resource/Service/UserFileMountService.php:TYPO3\CMS\Core\Resource\Service\UserFileMountService->renderTceformsSelectDropdown',
             )
+        ),
+        'generate' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:fileshare/Resources/Private/Language/locallang_db.xml:tx_fileshare_domain_model_share.generate',
+            'displayCond' => array(
+                'AND' => array(
+                    'REC:NEW:false',
+                    'FIELD:storage:!=:0',
+                    'FIELD:token:!=:',
+                ),
+            ),
+            'config' => array(
+                'type' => 'user',
+                'size' => 30,
+                'userFunc' => 'I4W\\Fileshare\\TYPO3\\UserFunctions\\LinkGeneration->renderLink',
+            ),
         ),
     ),
 );

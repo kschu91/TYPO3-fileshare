@@ -40,6 +40,11 @@ class Share extends AbstractEntity
     /**
      * @var string
      */
+    protected $contact;
+
+    /**
+     * @var string
+     */
     protected $token;
 
     /**
@@ -51,6 +56,22 @@ class Share extends AbstractEntity
      * @var string
      */
     protected $folder;
+
+    /**
+     * @param string $contact
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
 
     /**
      * @param string $folder

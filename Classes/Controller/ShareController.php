@@ -26,7 +26,6 @@
 namespace I4W\Fileshare\Controller;
 
 use I4W\Fileshare\Domain\Model\Share;
-use I4W\Fileshare\Domain\Repository\ShareRepository;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\StorageRepository;
@@ -37,7 +36,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 /**
  * @package I4W\Fileshare\Controller
  */
-class DownloadsController extends ActionController
+class ShareController extends ActionController
 {
     /**
      * @var Response
@@ -80,6 +79,24 @@ class DownloadsController extends ActionController
 
     /**
      * @param \I4W\Fileshare\Domain\Model\Share $share
+     * @throws \TYPO3\CMS\Core\Error\Http\PageNotFoundException
+     * @return string
+     */
+    public function listAction(\I4W\Fileshare\Domain\Model\Share $share)
+    {
+        $share = $this->shareRepository->findByUid($share->getUid());
+        if (false === $share instanceof Share) {
+            throw new PageNotFoundException(
+                sprintf('Could not find  share with uid "%s"', $share->getUid()),
+                1435840244
+            );
+        }
+        $this->view->assign('files', $this->getFilesFromShare($share));
+        $this->view->assign('share', $share);
+    }
+
+    /**
+     * @param \I4W\Fileshare\Domain\Model\Share $share
      * @param integer $fileId
      * @throws \TYPO3\CMS\Core\Error\Http\PageNotFoundException
      * @return string
@@ -106,24 +123,6 @@ class DownloadsController extends ActionController
             sprintf('Could not find file with uid "%s" and share with uid "%s"', $fileId, $share->getUid()),
             1435839990
         );
-    }
-
-    /**
-     * @param \I4W\Fileshare\Domain\Model\Share $share
-     * @throws \TYPO3\CMS\Core\Error\Http\PageNotFoundException
-     * @return string
-     */
-    public function listAction(\I4W\Fileshare\Domain\Model\Share $share)
-    {
-        $share = $this->shareRepository->findByUid($share->getUid());
-        if (false === $share instanceof Share) {
-            throw new PageNotFoundException(
-                sprintf('Could not find  share with uid "%s"', $share->getUid()),
-                1435840244
-            );
-        }
-        $this->view->assign('files', $this->getFilesFromShare($share));
-        $this->view->assign('share', $share);
     }
 
     /**
