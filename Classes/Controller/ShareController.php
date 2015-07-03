@@ -70,26 +70,15 @@ class ShareController extends ActionController
     }
 
     /**
-     * @return string
-     */
-    public function indexAction()
-    {
-        $this->view->assign('share', $this->shareRepository->findByUid(1));
-    }
-
-    /**
      * @param \I4W\Fileshare\Domain\Model\Share $share
      * @throws \TYPO3\CMS\Core\Error\Http\PageNotFoundException
      * @return string
+     * @dontvalidate
      */
-    public function listAction(\I4W\Fileshare\Domain\Model\Share $share)
+    public function listAction(\I4W\Fileshare\Domain\Model\Share $share = null)
     {
-        $share = $this->shareRepository->findByUid($share->getUid());
         if (false === $share instanceof Share) {
-            throw new PageNotFoundException(
-                sprintf('Could not find  share with uid "%s"', $share->getUid()),
-                1435840244
-            );
+            throw new PageNotFoundException('Could not find  share', 1435840244);
         }
         $this->view->assign('files', $this->getFilesFromShare($share));
         $this->view->assign('share', $share);
@@ -100,9 +89,13 @@ class ShareController extends ActionController
      * @param integer $fileId
      * @throws \TYPO3\CMS\Core\Error\Http\PageNotFoundException
      * @return string
+     * @dontvalidate
      */
-    public function downloadAction(\I4W\Fileshare\Domain\Model\Share $share, $fileId)
+    public function downloadAction(\I4W\Fileshare\Domain\Model\Share $share = null, $fileId = null)
     {
+        if (false === $share instanceof Share || $fileId <= 0) {
+            throw new PageNotFoundException('Could not find  share or fileId not given', 1435910645);
+        }
         foreach ($this->getFilesFromShare($share) as $file) {
             /** @var File $file */
             if ($file->getUid() == $fileId) {
@@ -127,10 +120,15 @@ class ShareController extends ActionController
     /**
      * @param \I4W\Fileshare\Domain\Model\Share $share
      * @throws \RuntimeException
+     * @throws \TYPO3\CMS\Core\Error\Http\PageNotFoundException
      * @return string
+     * @dontvalidate
      */
-    public function downloadAllAction(\I4W\Fileshare\Domain\Model\Share $share)
+    public function downloadAllAction(\I4W\Fileshare\Domain\Model\Share $share = null)
     {
+        if (false === $share instanceof Share) {
+            throw new PageNotFoundException('Could not find  share', 1435910678);
+        }
         $zip = new \ZipArchive;
         $res = $zip->open($share->getToken() . '.zip', \ZipArchive::CREATE);
         if (!$res) {

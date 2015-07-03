@@ -19,7 +19,7 @@
             <label index="tx_fileshare_domain_model_share.label">Label</label>
             <label index="tx_fileshare_domain_model_share.token">Token</label>
             <label index="tx_fileshare_domain_model_share.contact">Contact person or company</label>
-            <label index="tx_fileshare_domain_model_share.generate">Generate link</label>
+            <label index="tx_fileshare_domain_model_share.generate">Link to share</label>
 
         </languageKey>
         <languageKey index="de" type="array">
@@ -32,7 +32,7 @@
             <label index="tx_fileshare_domain_model_share.label">Bezeichnung</label>
             <label index="tx_fileshare_domain_model_share.token">Token</label>
             <label index="tx_fileshare_domain_model_share.contact">Kontaktperson oder Firma</label>
-            <label index="tx_fileshare_domain_model_share.generate">Link generieren</label>
+            <label index="tx_fileshare_domain_model_share.generate">Link zur Freigabe</label>
 
         </languageKey>
     </data>

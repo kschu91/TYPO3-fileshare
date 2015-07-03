@@ -62,6 +62,7 @@ class RealUrlConfig
                                     'alias_field' => 'token',
                                     'addWhereClause' => ' AND deleted = 0 AND hidden = 0',
                                     'useUniqueCache' => 1,
+                                    'enable404forInvalidAlias' => 1,
                                     'useUniqueCache_conf' => array(
                                         'strtolower' => 1,
                                         'spaceCharacter' => '-',
@@ -75,6 +76,7 @@ class RealUrlConfig
                                     'id_field' => 'uid',
                                     'alias_field' => 'identifier_hash',
                                     'useUniqueCache' => 1,
+                                    'enable404forInvalidAlias' => 1,
                                     'useUniqueCache_conf' => array(
                                         'strtolower' => 1,
                                         'spaceCharacter' => '-',
