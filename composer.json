@@ -4,6 +4,6 @@
     "type": "typo3-cms-extension",
     "require": {
         "typo3/cms-core": "*",
-        "ter/realurl": "*"
+        "typo3-ter/realurl": "*"
     }
 }
