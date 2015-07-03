@@ -15,6 +15,7 @@
             <label index="downloads.modified">Modification Date</label>
             <label index="downloads.size">Size</label>
             <label index="downloads.download">Download</label>
+            <label index="downloads.downloadAll">Download all files as ZIP archive</label>
             <label index="downloads.download.action">download</label>
 
         </languageKey>
@@ -28,6 +29,7 @@
             <label index="downloads.modified">Geändert</label>
             <label index="downloads.size">Größe</label>
             <label index="downloads.download">Download</label>
+            <label index="downloads.downloadAll">Alle Dateien als ZIP Archiv herunterladen</label>
             <label index="downloads.download.action">download</label>
 
         </languageKey>

@@ -31,7 +31,7 @@
                 <f:format.bytes>{file.size}</f:format.bytes>
             </td>
             <td>
-                <f:link.action action="download" controller="Share" addQueryString="false" arguments="{share: share, fileId: file.properties.uid}"
+                <f:link.action action="download" arguments="{share: share, fileId: file.properties.uid}"
                                pageUid="{page_id}" target="_blank">
                     <f:translate key="downloads.download.action"/>
                 </f:link.action>
@@ -40,3 +40,7 @@
     </f:for>
 </table>
 
+<f:link.action action="downloadAll" arguments="{share: share}"
+               pageUid="{page_id}" target="_blank">
+    <f:translate key="downloads.downloadAll"/>
+</f:link.action>

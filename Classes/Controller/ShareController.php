@@ -104,7 +104,6 @@ class ShareController extends ActionController
     public function downloadAction(\I4W\Fileshare\Domain\Model\Share $share, $fileId)
     {
         foreach ($this->getFilesFromShare($share) as $file) {
-            DebuggerUtility::var_dump($file);
             /** @var File $file */
             if ($file->getUid() == $fileId) {
                 $this->response->setHeader('Cache-control', 'public', true);
@@ -123,6 +122,33 @@ class ShareController extends ActionController
             sprintf('Could not find file with uid "%s" and share with uid "%s"', $fileId, $share->getUid()),
             1435839990
         );
+    }
+
+    /**
+     * @param \I4W\Fileshare\Domain\Model\Share $share
+     * @throws \RuntimeException
+     * @return string
+     */
+    public function downloadAllAction(\I4W\Fileshare\Domain\Model\Share $share)
+    {
+        $zip = new \ZipArchive;
+        $res = $zip->open($share->getToken() . '.zip', \ZipArchive::CREATE);
+        if (!$res) {
+            throw new \RuntimeException('Could not create ZIP archive', 1435909664);
+        }
+        foreach ($this->getFilesFromShare($share) as $file) {
+            /** @var File $file */
+            $zip->addFromString($file->getName(), $file->getContents());
+        }
+        $zip->close();
+
+        $this->response->setHeader('Cache-control', 'public', true);
+        $this->response->setHeader('Content-Description', 'File transfer', true);
+        $this->response->setHeader('Content-Disposition', 'attachment; filename=' . $share->getToken() . '.zip', true);
+        $this->response->setHeader('Content-Type', 'application/zip', true);
+        $this->response->sendHeaders();
+        readfile($share->getToken() . '.zip');
+        exit;
     }
 
     /**

@@ -50,6 +50,7 @@ class RealUrlConfig
                                 'valueMap' => array(
                                     'list' => 'list',
                                     'download' => 'download',
+                                    'download-all-files-as-zip' => 'downloadAll',
                                 ),
                                 'noMatch' => 'bypass',
                             ),
